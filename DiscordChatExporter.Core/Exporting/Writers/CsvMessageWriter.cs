@@ -23,7 +23,7 @@ internal partial class CsvMessageWriter : MessageWriter
         PlainTextMarkdownVisitor.Format(Context, markdown ?? "");
 
     public override async ValueTask WritePreambleAsync(CancellationToken cancellationToken = default) =>
-        await _writer.WriteLineAsync("AuthorID,Author,Date,Content,Attachments,Reactions");
+        await _writer.WriteLineAsync("Content");
 
     private async ValueTask WriteAttachmentsAsync(
         IReadOnlyList<Attachment> attachments,
@@ -72,27 +72,27 @@ internal partial class CsvMessageWriter : MessageWriter
         await base.WriteMessageAsync(message, cancellationToken);
 
         // Author ID
-        await _writer.WriteAsync(CsvEncode(message.Author.Id.ToString()));
-        await _writer.WriteAsync(',');
+        //await _writer.WriteAsync(CsvEncode(message.Author.Id.ToString()));
+        //await _writer.WriteAsync(',');
 
         // Author name
-        await _writer.WriteAsync(CsvEncode(message.Author.FullName));
-        await _writer.WriteAsync(',');
+        //await _writer.WriteAsync(CsvEncode(message.Author.FullName));
+        //await _writer.WriteAsync(' ');
 
         // Message timestamp
-        await _writer.WriteAsync(CsvEncode(Context.FormatDate(message.Timestamp)));
-        await _writer.WriteAsync(',');
+        //await _writer.WriteAsync(CsvEncode(Context.FormatDate(message.Timestamp)));
+        //await _writer.WriteAsync(',');
 
         // Message content
         await _writer.WriteAsync(CsvEncode(FormatMarkdown(message.Content)));
-        await _writer.WriteAsync(',');
+        await _writer.WriteAsync(' ');
 
         // Attachments
-        await WriteAttachmentsAsync(message.Attachments, cancellationToken);
-        await _writer.WriteAsync(',');
+        //await WriteAttachmentsAsync(message.Attachments, cancellationToken);
+        //await _writer.WriteAsync(' ');
 
         // Reactions
-        await WriteReactionsAsync(message.Reactions, cancellationToken);
+        //await WriteReactionsAsync(message.Reactions, cancellationToken);
 
         // Finish row
         await _writer.WriteLineAsync();

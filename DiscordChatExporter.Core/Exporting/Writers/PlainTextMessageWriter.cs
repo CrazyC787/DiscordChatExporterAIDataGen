@@ -143,7 +143,7 @@ internal class PlainTextMessageWriter : MessageWriter
 
     public override async ValueTask WritePreambleAsync(CancellationToken cancellationToken = default)
     {
-        await _writer.WriteLineAsync(new string('=', 62));
+        /*await _writer.WriteLineAsync(new string('=', 62));
         await _writer.WriteLineAsync($"Guild: {Context.Request.Guild.Name}");
         await _writer.WriteLineAsync($"Channel: {Context.Request.Channel.Category.Name} / {Context.Request.Channel.Name}");
 
@@ -157,7 +157,7 @@ internal class PlainTextMessageWriter : MessageWriter
             await _writer.WriteLineAsync($"Before: {Context.FormatDate(Context.Request.Before.Value.ToDate())}");
 
         await _writer.WriteLineAsync(new string('=', 62));
-        await _writer.WriteLineAsync();
+        await _writer.WriteLineAsync();*/
     }
 
     public override async ValueTask WriteMessageAsync(
@@ -186,9 +186,9 @@ internal class PlainTextMessageWriter : MessageWriter
 
     public override async ValueTask WritePostambleAsync(CancellationToken cancellationToken = default)
     {
-        await _writer.WriteLineAsync(new string('=', 62));
+        /*await _writer.WriteLineAsync(new string('=', 62));
         await _writer.WriteLineAsync($"Exported {MessagesWritten:N0} message(s)");
-        await _writer.WriteLineAsync(new string('=', 62));
+        await _writer.WriteLineAsync(new string('=', 62));*/
     }
 
     public override async ValueTask DisposeAsync()

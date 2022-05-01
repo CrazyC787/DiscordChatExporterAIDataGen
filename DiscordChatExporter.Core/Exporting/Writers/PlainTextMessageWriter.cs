@@ -25,8 +25,8 @@ internal class PlainTextMessageWriter : MessageWriter
     private async ValueTask WriteMessageHeaderAsync(Message message)
     {
         // Timestamp & author
-        await _writer.WriteAsync($"[{Context.FormatDate(message.Timestamp)}]");
-        await _writer.WriteAsync($" {message.Author.FullName}");
+        //await _writer.WriteAsync($"[{Context.FormatDate(message.Timestamp)}]");
+        //await _writer.WriteAsync($" {message.Author.FullName}");
 
         // Whether the message is pinned
         if (message.IsPinned)
@@ -139,7 +139,7 @@ internal class PlainTextMessageWriter : MessageWriter
         }
 
         await _writer.WriteLineAsync();
-    }
+    } 
 
     public override async ValueTask WritePreambleAsync(CancellationToken cancellationToken = default)
     {
@@ -176,11 +176,11 @@ internal class PlainTextMessageWriter : MessageWriter
         await _writer.WriteLineAsync();
 
         // Attachments, embeds, reactions, etc.
-        await WriteAttachmentsAsync(message.Attachments, cancellationToken);
+        /*await WriteAttachmentsAsync(message.Attachments, cancellationToken);
         await WriteEmbedsAsync(message.Embeds, cancellationToken);
         await WriteStickersAsync(message.Stickers, cancellationToken);
         await WriteReactionsAsync(message.Reactions, cancellationToken);
-
+        */
         await _writer.WriteLineAsync();
     }
 

@@ -1,3 +1,7 @@
+# wtf is this fork
+This fork alters how discord logs are exported to txt, to allow for easy generation of data to train AI's on.
+
+
 # DiscordChatExporter
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://vshymanskyy.github.io/StandWithUkraine)
